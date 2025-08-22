@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth UX */
+html { scroll-behavior: smooth }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale }
+
+/* App background: gentle, premium gradients */
+.bg-landing {
+  background:
+    radial-gradient(1200px 600px at 20% 10%, #e8f6ff 0%, rgba(255,255,255,0) 60%),
+    radial-gradient(900px 500px at 80% 35%, #eef1ff 0%, rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  background-size: 140% 140%;
+  animation: gradientShift 18s ease-in-out infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 0% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 0% }
+}
+
+/* Digital type look for subheader */
+.digital-type { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace }
+.digital-glow { text-shadow: 0 0 6px rgba(14,165,233,.35) }
+
+/* Pretty cards */
+.card {
+  @apply rounded-2xl border border-slate-200 bg-white/80 backdrop-blur shadow-soft;
+}
+.card-hover {
+  transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15,23,42,.08);
+}
+
+/* Section headings */
+.section-title {
+  @apply text-2xl sm:text-3xl font-semibold text-slate-900;
+}
+
+/* Subtle divider wave between sections */
+.section-divider {
+  background: radial-gradient(60% 50% at 50% 0%, rgba(8,88,121,0.06) 0%, rgba(8,88,121,0) 70%);
+}

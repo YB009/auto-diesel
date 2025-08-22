@@ -1,0 +1,1 @@
+export default ['Durite', 'Cargo', 'Hella', 'Lampion', 'Britax', 'Brigade'];
