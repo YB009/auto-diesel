@@ -1,32 +1,44 @@
-import React, { useState } from 'react';
+// client/src/components/Navbar.jsx
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
+export default function Navbar({ revealed = true }) {
+  return (
+    <AnimatePresence>
+      {revealed && (
+        <motion.header
+          className="fixed top-0 inset-x-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200"
+          initial={{ y: -24, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -24, opacity: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#top" className="font-bold text-lg text-brand-700">
+              Auto Diesel
+            </a>
 
-export default function Navbar() {
-const [open, setOpen] = useState(false);
-return (
-<header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200/60 reveal is-visible">
-<nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div className="flex h-16 items-center justify-between">
-<a href="#services" className="text-xl font-bold text-brand-700">Auto Diesel</a>
-<button className="md:hidden p-2" onClick={() => setOpen(!open)} aria-label="Toggle Menu">
-<span className="i">☰</span>
-</button>
-<ul className="hidden md:flex items-center gap-8 text-slate-700">
-<li><a href="#services" className="hover:text-brand-700">Services</a></li>
-<li><a href="#customers" className="hover:text-brand-700">Customers</a></li>
-<li><a href="#suppliers" className="hover:text-brand-700">Suppliers</a></li>
-<li><a href="#contact" className="hover:text-brand-700">Contact</a></li>
-</ul>
-</div>
-{open && (
-<ul className="md:hidden pb-4 space-y-2 text-slate-700">
-<li><a onClick={()=>setOpen(false)} href="#services">Services</a></li>
-<li><a onClick={()=>setOpen(false)} href="#customers">Customers</a></li>
-<li><a onClick={()=>setOpen(false)} href="#suppliers">Suppliers</a></li>
-<li><a onClick={()=>setOpen(false)} href="#contact">Contact</a></li>
-</ul>
-)}
-</nav>
-</header>
-);
+            <ul className="flex items-center gap-6 text-slate-700">
+              {[
+                ["Home", "#home"],
+                ["Services", "#services"],
+                ["Customers", "#customers"],
+                ["Suppliers", "#suppliers"],
+                ["Contact", "#contact"],
+              ].map(([label, href]) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    className="relative pb-1 transition-colors hover:text-brand-700 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-brand-600 after:transition-all"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </motion.header>
+      )}
+    </AnimatePresence>
+  );
 }

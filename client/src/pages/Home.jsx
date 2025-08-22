@@ -1,5 +1,5 @@
 // client/src/pages/Home.jsx
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import Loader from "../components/Loader.jsx";
 import Hero from "../components/Hero.jsx";
@@ -11,12 +11,16 @@ import Contact from "../components/Contact.jsx";
 import Footer from "../components/Footer.jsx";
 
 export default function Home() {
+  const [introDone, setIntroDone] = useState(false);
+
   return (
     <>
       <div id="top" />
-      <Navbar />
-      {/* Scroll-first landing */}
-      <Loader />
+      {/* Navbar is present but hidden until introDone */}
+      <Navbar revealed={introDone} />
+
+      {/* Intro overlay (locks scroll) */}
+      {!introDone && <Loader onDone={() => setIntroDone(true)} />}
 
       {/* Main content */}
       <Hero />
