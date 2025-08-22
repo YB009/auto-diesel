@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// Use relative path since frontend and backend are served from same domain
 const api = axios.create({ baseURL: '/api' });
 
 export async function fetchWhatsAppLink() {

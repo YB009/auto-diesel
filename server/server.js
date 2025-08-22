@@ -3,6 +3,11 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import nodemailer from 'nodemailer';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -11,6 +16,9 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
+
+// Serve static files from the React app build
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // Optional SMTP transporter (enabled only if env vars are present)
 let transporter = null;
@@ -48,7 +56,7 @@ if ((SMTP_SERVICE || (SMTP_HOST && SMTP_PORT)) && SMTP_USER && SMTP_PASS) {
 
 // Shared handler to send an email or log to console in dev
 async function sendMessage({ subject, text, html }) {
-  const to = process.env.EMAIL_TO || 'info@auto-diesel.co.uk';
+  const to = process.env.EMAIL_TO || 'owohdaniel09@gmail.com';
   const from = EMAIL_FROM || SMTP_USER || 'no-reply@auto-diesel.local';
   if (!transporter) {
     console.log('\n[DEV] Email payload (no SMTP configured):');
@@ -132,4 +140,9 @@ app.post('/api/test-email', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`API listening on http://localhost:${PORT}`));
+// Catch all handler: send back React's index.html file for any non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
+
+app.listen(PORT, () => console.log(`Server listening on http://localhost:${PORT}`));
