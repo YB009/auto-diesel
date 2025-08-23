@@ -120,9 +120,9 @@ app.post('/api/callback', async (req, res) => {
 
 // Simple computed WhatsApp deep-link (non-booking)
 app.get('/api/whatsapp-link', (req, res) => {
-  // UK number from the Contact page. Change to actual WhatsApp-enabled line if different.
-  const rawPhone = '01912760826';
-  const intl = '+441912760826';
+  // Nigerian number from the Contact page
+  const rawPhone = '08122318358';
+  const intl = '+2348122318358';
   const msg = encodeURIComponent('Hello Auto Diesel — I have an enquiry.');
   res.json({ link: `https://wa.me/${intl.replace('+', '')}?text=${msg}`, tel: `tel:${rawPhone}` });
 });

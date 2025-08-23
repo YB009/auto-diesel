@@ -4,8 +4,8 @@ import { fetchWhatsAppLink, requestCallback, sendContact } from '../lib/api.js';
 
 export default function Contact() {
 const fallbackMsg = encodeURIComponent('Hello Auto Diesel, I have an enquiry.');
-const fallbackLink = `https://wa.me/441912760826?text=${fallbackMsg}`;
-const [wa, setWa] = useState({ link: fallbackLink, tel: 'tel:01912760826' });
+const fallbackLink = `https://wa.me/2348122318358?text=${fallbackMsg}`;
+const [wa, setWa] = useState({ link: fallbackLink, tel: 'tel:08122318358' });
 const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
 const [status, setStatus] = useState(null);
 
@@ -53,7 +53,7 @@ return (
 
 <div className="mt-6 space-y-3 text-slate-700">
 <p><strong>Address:</strong> 10 St. Lawrence Rd, Newcastle upon Tyne, NE6 1AR</p>
-<p><strong>Phone:</strong> <a className="text-brand-700" href={wa.tel}>0191 276 0826</a></p>
+<p><strong>Phone:</strong> <a className="text-brand-700" href={wa.tel}>08122318358</a></p>
 <p><strong>Email:</strong> <a className="text-brand-700" href="mailto:info@auto-diesel.co.uk">info@auto-diesel.co.uk</a></p>
 <p><strong>WhatsApp:</strong> <a className="text-brand-700" href={wa.link} target="_blank" rel="noreferrer">Chat on WhatsApp</a></p>
 </div>
