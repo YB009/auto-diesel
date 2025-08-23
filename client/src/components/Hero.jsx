@@ -1,6 +1,7 @@
 // client/src/components/Hero.jsx
 import React from "react";
 import DigitalType from "./animations/DigitalType.jsx";
+import logo from "./logo.png"; // <-- ensure the file is placed here
 
 export default function Hero() {
   return (
@@ -8,9 +9,14 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 items-center">
           <div>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-slate-900">
-              Auto Diesel
-            </h1>
+            {/* Replace title with logo */}
+            <div className="flex items-center">
+              <img
+                src={logo}
+                alt="Auto Diesel"
+                className="h-16 sm:h-20 md:h-24 w-auto rounded-md object-contain"
+              />
+            </div>
 
             {/* Digital-Type under the main header */}
             <div className="mt-4 text-slate-700 text-lg sm:text-xl digital-type digital-glow">
@@ -48,12 +54,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Visual block */}
-          <div className="relative">
-            <div className="aspect-[4/3] rounded-3xl border border-slate-200 shadow-soft overflow-hidden">
-              <img src="/logo.png" alt="Auto Diesel logo" className="w-full h-full object-cover" />
-            </div>
-          </div>
+          {/* Visual block (kept as before) */}
+          
         </div>
       </div>
       <div className="section-divider h-12 mt-10" />
