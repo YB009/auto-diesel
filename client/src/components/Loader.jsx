@@ -101,7 +101,8 @@ import React, {
             onTouchMove={onTouchMove}
           >
             {/* soft gradient backdrop */}
-            <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_20%_0%,#E6F5FF,transparent_60%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(1200px_600px_at_20%_0%,#BFDBFE,transparent_60%),radial-gradient(1000px_500px_at_100%_100%,#BFDBFE,transparent_70%)] pointer-events-none" />
+
   
             {/* Centered stack that will fly upward into the navbar */}
             <motion.div
